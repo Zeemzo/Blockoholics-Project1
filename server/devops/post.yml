@@ -1,0 +1,26 @@
+version: 0.2
+
+env:
+  parameter-store:
+    environment : "/deployment/environment"
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 8
+    commands:
+      - echo Installing API dependencies in $environment
+      - npm install -g serverless@1.43.0
+      - cd api/post
+      - echo Installing post API dependencies
+      - npm install --silent
+      - echo Finished installing post API dependencies
+  build:
+    commands:
+      - echo Deploying post API
+      - serverless deploy --environment $environment
+      - echo Finished deploying locations API
+
+cache:
+  paths:
+    - 'api/post/node_modules/**/*'

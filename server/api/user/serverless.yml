@@ -1,0 +1,140 @@
+service:
+  name: covid-service
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+  - serverless-prune-plugin
+custom:
+  path: "covid"
+  version: ${opt:version, 'api/v1'}
+  environment: ${opt:environment, 'dev'}
+  profile: ${opt:environment, 'dev'}
+  serverless-offline:
+    port: 7200
+    prefix: ${self:custom.version}
+  webpack:
+    includeModules: true
+    isLocal: false
+provider:
+  name: aws
+  region: us-east-1
+  runtime: nodejs12.x
+  stage: ${self:custom.profile}
+  memorySize: 128
+  timeout: 10
+  environment: ${file(../../devops/env.yml):${self:custom.environment}}
+
+functions:
+  login:
+    handler: user/handler.login
+    events:
+      - http:
+          method: post
+          path: ${self:custom.path}/login
+          cors: true
+          # authorizer: authorize
+  xdrLogin:
+    handler: user/handler.xdrLogin
+    events:
+      - http:
+          method: post
+          path: ${self:custom.path}/xdrLogin
+          cors: true
+          # authorizer: authorize
+  register:
+    handler: user/handler.register
+    events:
+      - http:
+          method: post
+          path: ${self:custom.path}/register
+          cors: true
+          # authorizer: authorize
+  getAccount:
+    handler: user/handler.getAccount
+    events:
+      - http:
+          method: get
+          path: ${self:custom.path}/users/{id}
+          cors: true
+          # authorizer: authorize
+  searchAccounts:
+    handler: user/handler.searchAccounts
+    events:
+      - http:
+          method: get
+          path: ${self:custom.path}/users
+          cors: true
+          # authorizer: authorize
+  # editAccount:
+  #   handler: user/handler.editAccount
+  #   events:
+  #     - http:
+  #         method: put
+  #         path: ${self:custom.path}/user/{id}
+  #         cors: true
+  #         # authorizer: authorize
+  # deleteAccount:
+  #   handler: user/handler.deleteAccount
+  #   events:
+  #     - http:
+  #         method: delete
+  #         path: ${self:custom.path}/user/{id}
+  #         cors: true
+  #         # authorizer: authorize
+  addInitiative:
+    handler: user/handler.addInitiative
+    events:
+      - http:
+          method: post
+          path: ${self:custom.path}/initiatives
+          cors: true
+          # authorizer: authorize
+  editInitiative:
+    handler: user/handler.editInitiative
+    events:
+      - http:
+          method: put
+          path: ${self:custom.path}/initiatives/{id}
+          cors: true
+          # authorizer: authorize
+  deleteInitiative:
+    handler: user/handler.deleteInitiative
+    events:
+      - http:
+          method: delete
+          path: ${self:custom.path}/initiatives/{id}
+          cors: true
+          # authorizer: authorize
+  getInitiative:
+    handler: user/handler.getInitiative
+    events:
+      - http:
+          method: get
+          path: ${self:custom.path}/initiatives/{id}
+          cors: true
+          # authorizer: authorize
+  searchInitiatives:
+    handler: user/handler.searchInitiatives
+    events:
+      - http:
+          method: get
+          path: ${self:custom.path}/initiatives
+          cors: true
+          # authorizer: authorize
+  fundTransaction:
+    handler: user/handler.fundTransaction
+    events:
+      - http:
+          method: post
+          path: ${self:custom.path}/transactions/fund
+          cors: true
+          # authorizer: authorize
+  addKYC:
+    handler: user/handler.addKYC
+    events:
+      - http:
+          method: post
+          path: ${self:custom.path}/kyc
+          cors: true
+          # authorizer: authorize

@@ -1,0 +1,13 @@
+Type: AWS::IAM::Policy
+Properties: 
+  PolicyName: auth-service-s3
+  PolicyDocument: 
+    Version: '2012-10-17'
+    Statement: 
+      - Effect: Allow
+        Action: 
+          - s3:*
+        Resource:
+          - "arn:aws:s3:::*"
+  Roles: 
+    - Ref: IamRoleLambdaExecution
