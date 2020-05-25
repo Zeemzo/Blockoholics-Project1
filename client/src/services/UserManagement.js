@@ -412,7 +412,6 @@ export async function TransferFund(DestinationPublicKey, Amount, keypair, sender
         headers: {
           Authorization: "bearer " + token,
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*"
         }
       }
     );
