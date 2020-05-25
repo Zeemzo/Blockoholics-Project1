@@ -88,7 +88,7 @@ function CreateInitiativePage(props) {
         if (response != null) {
             const OptionsArray = []
             response.forEach((item) => {
-                console.log(item)
+                //console.log(item)
                 OptionsArray.push(
                     { label: item.alias + " - " + item.publicKey.substring(0, 20) + " ...", value: item.publicKey }
                 )

@@ -1,6 +1,6 @@
 //dev
-export var dappBackend = "http://localhost:7200/api/v1/covid";
-// export var dappBackend = "https://baiq4ylqze.execute-api.us-east-1.amazonaws.com/dev/covid";
+// export var dappBackend = "http://localhost:7200/api/v1/covid";
+export var dappBackend = "https://baiq4ylqze.execute-api.us-east-1.amazonaws.com/dev/covid";
 
 export var StellarUrl= "https://horizon-testnet.stellar.org"
 export var StellarNetwork="TestNet"

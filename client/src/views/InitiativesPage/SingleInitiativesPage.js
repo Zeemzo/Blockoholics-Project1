@@ -38,7 +38,8 @@ import styles from "assets/jss/material-kit-react/views/profilePage.js";
 import { StellarUrl } from "variables/constants";
 import StellarSdk from "stellar-sdk";
 import Badge from 'components/Badge/Badge.js';
-
+let lifeCount = 0;
+let dollarCount = 0;
 const useStyles = makeStyles(styles);
 export default function SingleBeneficiariesPage(props) {
 
@@ -102,14 +103,20 @@ export default function SingleBeneficiariesPage(props) {
           .cursor(lastCursor)
           .stream({
             onmessage: (txResponse) => {
-              console.log(txResponse)
               var arrReceived = received
               if (txResponse.type == "payment"
                 && txResponse.to == init.recipient) {
+                console.log(txResponse)
+
                 arrReceived.push(txResponse);
                 if (txResponse.asset_code == "LIFE") {
-                  setDollars((parseInt(txResponse.amount) + life) + dollars);
-                  setLife(life + parseInt(txResponse.amount));
+
+                  setLife(parseInt(txResponse.amount) + lifeCount)
+                  lifeCount = parseInt(txResponse.amount) + lifeCount;
+
+                  setDollars(parseInt(txResponse.amount) + dollarCount);
+                  dollarCount = parseInt(txResponse.amount) + dollarCount;
+                  // setLife(life + parseInt(txResponse.amount));
                 }
               }
               setReceived(arrReceived)

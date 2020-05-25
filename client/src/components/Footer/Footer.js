@@ -44,13 +44,20 @@ export default function Footer(props) {
         <div className={classes.right}>
           &copy; {1900 + new Date().getYear()} , made with{" "}
           <Favorite className={classes.icon} /> by{" "}
-          <a
+          {/* <a
             href="https://blockoholics.com"
             className={aClasses}
             target="_blank"
           >
             <img height="50px" src={image}></img>
-          </a>.
+          </a>. */
+          <a
+          href="https://zeemzo.ml"
+          className={aClasses}
+          target="_blank"
+        >
+          zeemzo
+        </a>}
         </div>
       </div>
     </footer>
