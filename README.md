@@ -8,7 +8,7 @@
 
 ### Project Demo
 #### Watch the Project Demo Video Below
-[![Watch the Project Demo](https://imgur.com/F5ttlYg.gif)](https://youtu.be/E1ddGHPuZDE)
+[![Watch the Project Demo](https://i.imgur.com/F5ttlYgm.gif)](https://youtu.be/E1ddGHPuZDE)
 
 
 ### Human Server
