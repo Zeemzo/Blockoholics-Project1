@@ -29,7 +29,7 @@
       "reflect-metadata": "0.1.13",
       "request": "2.88.0",
       "rxjs-compat": "6.5.2",
-      "serverless": "1.44.1",
+      "serverless": "1.83.3",
       "sha256": "0.2.0",
       "source-map-support": "0.5.12",
       "stellar-base": "0.11.0",
